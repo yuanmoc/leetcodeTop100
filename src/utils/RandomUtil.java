@@ -10,4 +10,8 @@ public class RandomUtil {
         return random.nextInt(0, max);
     }
 
+    public static int getRandomInt(int min , int max) {
+        return random.nextInt(min, max);
+    }
+
 }

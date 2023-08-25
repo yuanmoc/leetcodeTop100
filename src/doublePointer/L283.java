@@ -1,6 +1,7 @@
 package doublePointer;
 
 import utils.ArrayUtil;
+import utils.RandomUtil;
 import utils.StringUtil;
 
 /**
@@ -22,12 +23,27 @@ import utils.StringUtil;
 public class L283 {
 
     public static void main(String[] args) {
-        int[] randomArray = {2,1};
+        int[] randomArray = ArrayUtil.getRandomArray(8);
         moveZeroes(randomArray);
         StringUtil.print(randomArray);
     }
 
+    // 双指针
     public static void moveZeroes(int[] nums) {
+        int left = 0, right = 0;
+        while (right < nums.length) {
+            if (nums[right] == 0) {
+                right++;
+            } else {
+                nums[left++] = nums[right++];
+            }
+        }
+        while (left < nums.length) {
+            nums[left++] = 0;
+        }
+    }
+
+    public static void moveZeroes1(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 1; j < nums.length - i; j++) {
                 // 要求排序时，可以这样判断
